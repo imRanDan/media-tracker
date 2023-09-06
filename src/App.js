@@ -1,22 +1,27 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Header from './components/Header';
 import Home from './components/Home';
 import Books from './components/Books';
 import Movies from './components/Movies';
 import TVShows from './components/TVShows';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#556cd6',
+    },
+  },
+});
 
 function App() {
   return (
     <Router>
       <div>
         {/* Navigation */}
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/books">Books</Link>
-          <Link to="/movies">Movies</Link>
-          <Link to="/tvshows">TV Shows</Link>
-        </nav>
+      <Header />
 
       {/* Routes */}
       <Routes>

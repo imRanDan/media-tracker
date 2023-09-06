@@ -3,7 +3,7 @@ import React from 'react';
 function TVShows() {
   return (
     <div>
-      <p>blah</p>
+      <p>*insert TV Shows*</p>
     </div>
   )
 }

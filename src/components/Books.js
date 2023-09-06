@@ -3,7 +3,7 @@ import React from 'react';
 function Books() {
   return (
     <div>
-      <p>YELLOW</p>
+      <p>*insert books here*</p>
     </div>
   )
 }

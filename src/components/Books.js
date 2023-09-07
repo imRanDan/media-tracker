@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-
+import useStyles from './Books.styles';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -32,6 +32,9 @@ function Books() {
 
   // Validation
   const [error,  setError] = useState(null)
+
+  // Styling
+  const classes= useStyles()
 
   const addBook = () => {
     if (!bookTitle.trim() || !bookAuthor.trim()) {

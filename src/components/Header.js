@@ -14,9 +14,10 @@ function Header() {
         </Typography>
         <Button color="inherit" component={Link} to="/">Home</Button>
         <Button color="inherit" component={Link} to="/about">About</Button>
+        <Button color="inherit" component={Link} to="/books">Books</Button>
         <Button color="inherit" component={Link} to="/movies">Movies</Button>
         <Button color="inherit" component={Link} to="/tvshows">TV Shows</Button>
-        <Button color="inherit" component={Link} to="/books">Books</Button>
+
         {/* ... other nav links */}
       </Toolbar>
     </AppBar>

@@ -22,6 +22,37 @@ function Books() {
     )
   }
 
+
+  // Deleting entries
+  const deleteBook = (id) => {
+    if (window.confirm("Are you sure you want to delete this book?")) {
+      setBooks((prevBooks) => prevBooks.filter(book => book.id !== id))
+    }
+  }
+
+  // Validation
+  const [error,  setError] = useState(null)
+
+  const addBook = () => {
+    if (!bookTitle.trim() || !bookAuthor.trim()) {
+      setError("Book Title and Author Entries cannot be empty!")
+      return
+    }
+
+    const newBook = {
+      id: Date.now(),
+      title: bookTitle,
+      author: bookAuthor,
+      status: bookStatus
+    }
+
+    setBooks([...books, newBook])
+    setBookTitle('')
+    setBookAuthor('')
+    setBookStatus('Reading')
+    setError(null)
+}
+
   return (
     <div>
       <input 
@@ -36,24 +67,14 @@ function Books() {
         onChange={e => setBookAuthor(e.target.value)}
         placeholder="Author's name"
       />
+      {error && <p style={{color: "red"}}>{error}</p>}
       <select value={bookStatus} onChange={(e) => setBookStatus(e.target.value)}>
         <option value="Reading">Reading</option>
         <option value="Completed">Completed</option>
         <option value="Wishlist">Wishlist</option>
         <option value="Abandoned">Abandoned</option>
       </select>
-      <button onClick={() => {
-        const newBook = {
-          id: Date.now(),
-          title: bookTitle,
-          author: bookAuthor,
-          status: bookStatus
-        }
-        setBooks([...books, newBook])
-        setBookTitle('')
-        setBookAuthor('')
-        setBookStatus('Reading')
-      }}>
+      <button onClick={addBook}>
         Add Book
       </button>
 
@@ -61,7 +82,6 @@ function Books() {
         <div key = {book.id}>
           <p>Title: {book.title}</p>
           <p>Author: {book.author}</p>
-          <p>Status: {book.status}</p>
           <button onClick={() => setEditingId(book.id)}>Edit</button>
           {editingId === book.id ? (
           <>
@@ -79,6 +99,7 @@ function Books() {
           ) : (
             <p>Status: {book.status}</p>
           )}
+          <button onClick={() => deleteBook(book.id)}>Delete</button>
         </div>
       ))}
     </div>
